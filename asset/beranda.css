@@ -1,28 +1,7 @@
-/* ===========================
-   Global Styles
-=========================== */
-html, body {
-  height: 100%;
-  margin: 0;
+body {
   font-family: "Playfair Display", serif;
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #f8f9fa;
 }
 
-h2 {
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-}
-
-p {
-  font-size: 1rem;
-}
-
-/* ===========================
-   Carousel
-=========================== */
 .carousel-item {
   min-height: auto;
 }
@@ -31,141 +10,16 @@ p {
   overflow: hidden;
 }
 
-#bookCarousel {
-  touch-action: pan-y;
-}
-
-/* ===========================
-   Sidebar
-=========================== */
-.sidebar {
-  width: 260px;
-}
-
-.sidebar-desktop,
-.offcanvas-lg {
-  background-color: #212529;
-  color: #fff;
-  width: 260px;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding-top: 1rem;
-}
-
-.offcanvas-lg {
-  border-right: 1px solid rgba(255,255,255,.1);
-}
-
+/* Sidebar desktop */
 @media (min-width: 992px) {
-  .sidebar-offcanvas,
-  .offcanvas-lg {
+  .sidebar-offcanvas {
     position: static;
     transform: none !important;
     visibility: visible !important;
   }
-
-  main {
-    margin-left: 260px;
-  }
 }
 
-/* Profile Box */
-.profile-box {
-  text-align: center;
-  padding: 1rem 0;
-}
-
-.profile-img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 0.5rem;
-  border: 3px solid #fff;
-}
-
-@media (max-width: 576px) {
-  .profile-img {
-    width: 110px;
-    height: 110px;
-  }
-}
-
-.profile-link {
-  color: white;
-  text-decoration: none;
-}
-
-.profile-link:hover {
-  opacity: .85;
-}
-
-/* Sidebar Menu */
-.sidebar-menu {
-  padding: 0 10px;
-}
-
-.sidebar-menu .nav-section {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #adb5bd;
-  margin: 1rem 0 0.25rem 0.75rem;
-  letter-spacing: 1px;
-}
-
-.sidebar-menu .nav-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #d1d5db;
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: all 0.25s ease;
-}
-
-.sidebar-menu .nav-link i {
-  font-size: 1.1rem;
-}
-
-.sidebar-menu .nav-link:hover {
-  background-color: rgba(33, 118, 192, 0.2);
-  color: #ffffff;
-  transform: translateX(4px);
-}
-
-.sidebar-menu .nav-link.active {
-  background: linear-gradient(135deg, #0091ff, #20a4c9);
-  color: #ffffff;
-  font-weight: 600;
-  box-shadow: 0 6px 16px rgba(1, 64, 255, 0.45);
-  position: relative;
-}
-
-.sidebar-menu .nav-link.active::before {
-  content: "";
-  width: 4px;
-  height: 60%;
-  background-color: #ffffff;
-  border-radius: 4px;
-  position: absolute;
-  left: 0;
-  top: 20%;
-}
-
-.sidebar-menu .nav-link.disabled {
-  color: #6c757d;
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-/* ===========================
-   Book Grid & Cards
-=========================== */
+/* GRID BUKU */
 .book-row {
   display: grid;
   gap: 1rem;
@@ -183,6 +37,105 @@ p {
   }
 }
 
+/* CARD COVER */
+.feature-card {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+/* Logo */
+.logo-img {
+  height: 36px;
+}
+
+/* Profile */
+.profile-box {
+  text-align: center;
+}
+.profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+.profile-link {
+  color: white;
+  text-decoration: none;
+}
+.profile-link:hover {
+  opacity: .85;
+}
+
+#bookCarousel {
+  touch-action: pan-y;
+}
+
+.sidebar-menu {
+  padding: 0 10px;
+}
+
+.sidebar-menu .nav-section {
+  color: #6c757d;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  margin: 14px 8px 6px;
+  text-transform: uppercase;
+}
+
+/* MENU ITEM */
+.sidebar-menu .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #d1d5db;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+/* ICON */
+.sidebar-menu .nav-link i {
+  font-size: 1.1rem;
+}
+
+/* HOVER */
+.sidebar-menu .nav-link:hover {
+  background-color: rgba(33, 118, 192, 0.2);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* ACTIVE */
+.sidebar-menu .nav-link.active {
+  background: linear-gradient(135deg, #0091ff, #20a4c9);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(1, 64, 255, 0.45);
+}
+
+/* GARIS PENANDA AKTIF */
+.sidebar-menu .nav-link.active::before {
+  content: "";
+  width: 4px;
+  height: 60%;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+/* NON KLIK (jika ada) */
+.sidebar-menu .nav-link.disabled {
+  color: #6c757d;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* === SCROLL AREA === */
 .book-scroll {
   display: flex;
   gap: 1rem;
@@ -191,6 +144,7 @@ p {
   scroll-snap-type: x mandatory;
 }
 
+/* Scrollbar */
 .book-scroll::-webkit-scrollbar {
   height: 8px;
 }
@@ -247,54 +201,3 @@ p {
   font-size: 0.75rem;
 }
 
-/* ===========================
-   Logo
-=========================== */
-.logo-img {
-  height: 36px;
-}
-
-/* ===========================
-   Card Body
-=========================== */
-.card-body {
-  padding: 2.5rem;
-}
-
-@media (max-width: 576px) {
-  .card-body {
-    padding: 1.5rem;
-  }
-
-  table {
-    font-size: 0.85rem;
-  }
-}
-
-/* ===========================
-   Forms (Signin)
-=========================== */
-.form-signin {
-  max-width: 420px;
-  padding: 1rem;
-  margin: 0 auto;
-}
-
-.form-signin .form-floating:focus-within {
-  z-index: 2;
-}
-
-.form-signin img {
-  max-width: 72px;
-  height: auto;
-}
-
-@media (max-width: 576px) {
-  .form-signin {
-    padding: 0.5rem;
-  }
-
-  h1 {
-    font-size: 1.25rem;
-  }
-}

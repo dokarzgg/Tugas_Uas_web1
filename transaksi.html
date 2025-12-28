@@ -10,66 +10,210 @@
 
 <!-- Font -->
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="asset/style.css">
+
+<style>
+body {
+  font-family: "Playfair Display", serif;
+  margin: 0;
+}
+
+/* Logo */
+.logo-img {
+  height: 36px;
+}
+
+/* Profile */
+.profile-box {
+  text-align: center;
+}
+
+.profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+.profile-link {
+  color: white;
+  text-decoration: none;
+}
+
+.profile-link:hover {
+  opacity: 0.85;
+}
+
+
+/* Sidebar desktop */
+@media (min-width: 992px) {
+  .sidebar-offcanvas {
+    position: static;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
+
+/* Sidebar menu styling */
+.sidebar-menu {
+  padding: 0 10px;
+}
+
+.sidebar-menu .nav-section {
+  color: #6c757d;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  margin: 14px 8px 6px;
+  text-transform: uppercase;
+}
+
+/* Menu item */
+.sidebar-menu .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #d1d5db;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+/* Icon */
+.sidebar-menu .nav-link i {
+  font-size: 1.1rem;
+}
+
+/* Hover effect */
+.sidebar-menu .nav-link:hover {
+  background-color: rgba(33, 118, 192, 0.2);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* Active state */
+.sidebar-menu .nav-link.active {
+  background: linear-gradient(135deg, #0091ff, #20a4c9);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(1, 64, 255, 0.45);
+}
+
+/* Garis penanda aktif */
+.sidebar-menu .nav-link.active::before {
+  content: "";
+  width: 4px;
+  height: 60%;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+/* Disabled / non klik */
+.sidebar-menu .nav-link.disabled {
+  color: #6c757d;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+
+.nav-section {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #adb5bd;
+  margin: 1rem 0 0.25rem 0.75rem;
+}
+
+.nav-link {
+  color: #fff;
+  padding: 0.5rem 1rem;
+  display: block;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+/* MAIN OFFSET DESKTOP */
+@media (min-width: 992px) {
+  main {
+    margin-left: 260px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<!-- SIDEBAR DESKTOP -->
-<div class="sidebar-desktop d-none d-lg-block">
-  <a href="profile.html" class="profile-link d-block">
-    <div class="profile-box">
-      <img src="asset/img/profil.jpeg" class="profile-img mb-2" />
-      <h6 class="mb-0">Dafa Abyy</h6>
-      <small class="text-secondary">Mahasiswa</small>
-    </div>
-  </a>
-
-  <ul class="nav flex-column">
-    <li class="nav-section">MENU MAHASISWA</li>
-    <li><a href="beranda.html" class="nav-link">Beranda</a></li>
-    <li><a href="transaksi.html" class="nav-link active">Pinjam Buku</a></li>
-    <li><a href="daftar-transaksi.html" class="nav-link">Riwayat Pinjam</a></li>
-
-    <li class="nav-section">AKUN</li>
-    <li><a href="profile.html" class="nav-link">Profil Saya</a></li>
-  </ul>
-</div>
-
-<!-- SIDEBAR MOBILE -->
-<div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="sidebarMobile">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title">Dashboard</h5>
-    <button class="btn-close" data-bs-dismiss="offcanvas"></button>
-  </div>
-  <div class="offcanvas-body p-0">
-    <a href="profile.html" class="profile-link d-block my-3">
-      <div class="profile-box">
-        <img src="asset/img/profil.jpeg" class="profile-img mb-2" />
-        <h6 class="mb-0">Dafa Abyy</h6>
-        <small class="text-secondary">Mahasiswa</small>
-      </div>
-    </a>
-
-    <ul class="nav flex-column">
-      <li class="nav-section">MENU MAHASISWA</li>
-      <li><a href="beranda.html" class="nav-link">Beranda</a></li>
-      <li><a href="transaksi.html" class="nav-link active">Pinjam Buku</a></li>
-      <li><a href="daftar-transaksi.html" class="nav-link">Riwayat Pinjam</a></li>
-
-      <li class="nav-section">AKUN</li>
-      <li><a href="profile.html" class="nav-link">Profil Saya</a></li>
-    </ul>
-  </div>
-</div>
-
-<!-- HEADER MOBILE -->
+  <!-- HEADER MOBILE -->
 <header class="d-lg-none border-bottom py-3 px-4 d-flex align-items-center gap-2">
   <button class="btn btn-outline-secondary" data-bs-toggle="offcanvas" data-bs-target="#sidebarMobile">
     ☰ Menu
   </button>
   <h1 class="h5 mb-0">Perpustakaan Universitas Pamulang</h1>
 </header>
+
+<div class="d-flex min-vh-100">
+<!-- SIDEBAR DESKTOP -->
+<div
+        class="offcanvas offcanvas-start sidebar-offcanvas text-bg-dark"
+        id="sidebar"
+        style="width: 260px"
+      >
+        <a href="profile.html" class="profile-link d-block my-3">
+          <div class="profile-box">
+            <img src="asset/img/profil.jpeg" class="profile-img mb-2" />
+            <h6 class="mb-0">Dafa Abyy</h6>
+            <small class="text-secondary">Mahasiswa</small>
+          </div>
+        </a>
+
+        <div class="offcanvas-header">
+          <h5>Dashboard</h5>
+          <button
+            class="btn-close btn-close-white d-lg-none"
+            data-bs-dismiss="offcanvas"
+          ></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <ul class="nav nav-pills flex-column gap-1 sidebar-menu">
+  <li class="nav-section">MENU MAHASISWA</li>
+
+  <li>
+    <a class="nav-link " href="beranda.html">
+      <i class="bi bi-house-door"></i>
+      <span>Beranda</span>
+    </a>
+  </li>
+
+  <li>
+    <a class="nav-link active" href="transaksi.html">
+      <i class="bi bi-book"></i>
+      <span>Pinjam Buku</span>
+    </a>
+  </li>
+
+  <li>
+    <a class="nav-link" href="daftar-transaksi.html">
+      <i class="bi bi-clock-history"></i>
+      <span>Riwayat Pinjam</span>
+    </a>
+  </li>
+
+  <li class="nav-section">AKUN</li>
+
+  <li>
+    <a class="nav-link" href="profile.html">
+      <i class="bi bi-person-circle"></i>
+      <span>Profil Saya</span>
+    </a>
+  </li>
+</ul>
+
+        </div>
+      </div>
 
 <!-- MAIN CONTENT -->
 <main class="flex-grow-1 p-4 bg-body-tertiary">
@@ -122,6 +266,7 @@
     </div>
   </div>
 </main>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="asset/transaksi.js"></script>
