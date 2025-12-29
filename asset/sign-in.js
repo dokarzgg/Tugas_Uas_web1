@@ -5,7 +5,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   const password = document.getElementById("password").value;
   const errorMsg = document.getElementById("errorMsg");
 
-  // DATA LOGIN (contoh)
+  // DATA LOGIN
   const validUsername = "admin";
   const validPassword = "12345";
 
