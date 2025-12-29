@@ -7,7 +7,8 @@
 
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 <!-- Font -->
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&display=swap" rel="stylesheet">
 
@@ -17,14 +18,24 @@ body {
   margin: 0;
 }
 
-/* Logo */
-.logo-img {
-  height: 36px;
+/* Sidebar desktop */
+.sidebar-desktop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background-color: #212529;
+  color: #fff;
+  overflow-y: auto;
+  padding-top: 1rem;
+  z-index: 1000;
 }
 
 /* Profile */
 .profile-box {
   text-align: center;
+  padding: 0 1rem;
 }
 
 .profile-img {
@@ -33,6 +44,7 @@ body {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #fff;
+  margin-bottom: 0.5rem;
 }
 
 .profile-link {
@@ -44,30 +56,20 @@ body {
   opacity: 0.85;
 }
 
-
-/* Sidebar desktop */
-@media (min-width: 992px) {
-  .sidebar-offcanvas {
-    position: static;
-    transform: none !important;
-    visibility: visible !important;
-  }
-}
-
-/* Sidebar menu styling */
+/* Sidebar menu */
 .sidebar-menu {
-  padding: 0 10px;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
 }
 
 .sidebar-menu .nav-section {
-  color: #6c757d;
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  margin: 14px 8px 6px;
+  font-size: 0.75rem;
   text-transform: uppercase;
+  color: #adb5bd;
+  margin: 1rem 0 0.25rem 1rem;
 }
 
-/* Menu item */
 .sidebar-menu .nav-link {
   display: flex;
   align-items: center;
@@ -77,21 +79,19 @@ body {
   padding: 10px 14px;
   font-size: 0.95rem;
   transition: all 0.25s ease;
+  text-decoration: none;
 }
 
-/* Icon */
 .sidebar-menu .nav-link i {
   font-size: 1.1rem;
 }
 
-/* Hover effect */
 .sidebar-menu .nav-link:hover {
   background-color: rgba(33, 118, 192, 0.2);
   color: #ffffff;
   transform: translateX(4px);
 }
 
-/* Active state */
 .sidebar-menu .nav-link.active {
   background: linear-gradient(135deg, #0091ff, #20a4c9);
   color: #ffffff;
@@ -99,7 +99,6 @@ body {
   box-shadow: 0 6px 16px rgba(1, 64, 255, 0.45);
 }
 
-/* Garis penanda aktif */
 .sidebar-menu .nav-link.active::before {
   content: "";
   width: 4px;
@@ -108,168 +107,121 @@ body {
   border-radius: 4px;
 }
 
-/* Disabled / non klik */
-.sidebar-menu .nav-link.disabled {
-  color: #6c757d;
-  pointer-events: none;
-  opacity: 0.6;
+/* MAIN CONTENT */
+main {
+  margin-left: 0;
+  padding: 1rem;
 }
 
-
-.nav-section {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #adb5bd;
-  margin: 1rem 0 0.25rem 0.75rem;
-}
-
-.nav-link {
-  color: #fff;
-  padding: 0.5rem 1rem;
-  display: block;
-  text-decoration: none;
-}
-
-.nav-link.active {
-  background-color: #0d6efd;
-  color: #fff;
-}
-
-/* MAIN OFFSET DESKTOP */
 @media (min-width: 992px) {
   main {
-    margin-left: 260px;
+    margin-left: 260px; /* sesuai lebar sidebar */
+    padding: 2rem;
   }
 }
 </style>
 </head>
-
 <body>
 
-  <!-- HEADER MOBILE -->
+<!-- HEADER MOBILE -->
 <header class="d-lg-none border-bottom py-3 px-4 d-flex align-items-center gap-2">
   <button class="btn btn-outline-secondary" data-bs-toggle="offcanvas" data-bs-target="#sidebarMobile">
-    ☰ Menu
+    ☰
   </button>
   <h1 class="h5 mb-0">Perpustakaan Universitas Pamulang</h1>
 </header>
 
-<div class="d-flex min-vh-100">
-<!-- SIDEBAR DESKTOP -->
-<div
-        class="offcanvas offcanvas-start sidebar-offcanvas text-bg-dark"
-        id="sidebar"
-        style="width: 260px"
-      >
-        <a href="profile.html" class="profile-link d-block my-3">
-          <div class="profile-box">
-            <img src="asset/img/profil.jpeg" class="profile-img mb-2" />
-            <h6 class="mb-0">Dafa Abyy</h6>
-            <small class="text-secondary">Mahasiswa</small>
-          </div>
-        </a>
+<div class="d-flex">
 
-        <div class="offcanvas-header">
-          <h5>Dashboard</h5>
-          <button
-            class="btn-close btn-close-white d-lg-none"
-            data-bs-dismiss="offcanvas"
-          ></button>
-        </div>
-
-        <div class="offcanvas-body">
-          <ul class="nav nav-pills flex-column gap-1 sidebar-menu">
-  <li class="nav-section">MENU MAHASISWA</li>
-
-  <li>
-    <a class="nav-link " href="beranda.html">
-      <i class="bi bi-house-door"></i>
-      <span>Beranda</span>
-    </a>
-  </li>
-
-  <li>
-    <a class="nav-link active" href="transaksi.html">
-      <i class="bi bi-book"></i>
-      <span>Pinjam Buku</span>
-    </a>
-  </li>
-
-  <li>
-    <a class="nav-link" href="daftar-transaksi.html">
-      <i class="bi bi-clock-history"></i>
-      <span>Riwayat Pinjam</span>
-    </a>
-  </li>
-
-  <li class="nav-section">AKUN</li>
-
-  <li>
-    <a class="nav-link" href="profile.html">
-      <i class="bi bi-person-circle"></i>
-      <span>Profil Saya</span>
-    </a>
-  </li>
-</ul>
-
-        </div>
+  <!-- SIDEBAR DESKTOP -->
+  <div class="d-none d-lg-block sidebar-desktop">
+    <a href="profile.html" class="profile-link">
+      <div class="profile-box">
+        <img src="asset/img/profil.jpeg" class="profile-img" />
+        <h6 class="mb-0">Dafa Abyy</h6>
+        <small class="text-secondary">Mahasiswa</small>
       </div>
+    </a>
+    <ul class="sidebar-menu">
+      <li class="nav-section">MENU MAHASISWA</li>
+      <li><a href="beranda.html" class="nav-link"><i class="bi bi-house-door"></i> Beranda</a></li>
+      <li><a href="transaksi.html" class="nav-link active"><i class="bi bi-book"></i> Pinjam Buku</a></li>
+      <li><a href="daftar-transaksi.html" class="nav-link"><i class="bi bi-clock-history"></i> Riwayat Pinjam</a></li>
+      <li class="nav-section">AKUN</li>
+      <li><a href="profile.html" class="nav-link"><i class="bi bi-person-circle"></i> Profil Saya</a></li>
+    </ul>
+  </div>
 
-<!-- MAIN CONTENT -->
-<main class="flex-grow-1 p-4 bg-body-tertiary">
-  <div class="container py-4 py-md-5">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-8">
-
-        <div class="card shadow-lg rounded-4">
-          <div class="card-body">
-
-            <h2 class="mb-4 text-center">Form Transaksi Peminjaman Buku</h2>
-
-            <form id="formTransaksi">
-              <div class="mb-3">
-                <label class="form-label">Nama Peminjam</label>
-                <input type="text" id="nama" class="form-control" required>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label">Judul Buku</label>
-                <input type="text" id="buku" class="form-control" required>
-              </div>
-
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label">Tanggal Pinjam</label>
-                  <input type="date" id="tglPinjam" class="form-control" required>
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label">Tanggal Kembali</label>
-                  <input type="date" id="tglKembali" class="form-control" required>
-                </div>
-              </div>
-
-              <div class="d-grid mt-4">
-                <button type="submit" class="btn btn-primary btn-lg">Simpan Transaksi</button>
-              </div>
-            </form>
-
-            <hr class="my-4">
-            <div class="text-center">
-              <a href="daftar-transaksi.html" class="btn btn-outline-secondary">Lihat Daftar Transaksi</a>
-            </div>
-
-          </div>
+  <!-- SIDEBAR MOBILE -->
+  <div class="offcanvas offcanvas-start d-lg-none text-bg-dark" id="sidebarMobile" style="width:260px;">
+    <div class="offcanvas-header">
+      <h5>Dashboard</h5>
+      <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <a href="profile.html" class="profile-link">
+        <div class="profile-box">
+          <img src="asset/img/profil.jpeg" class="profile-img" />
+          <h6 class="mb-0">Dafa Abyy</h6>
+          <small class="text-secondary">Mahasiswa</small>
         </div>
-
-      </div>
+      </a>
+      <ul class="sidebar-menu">
+        <li class="nav-section">MENU MAHASISWA</li>
+        <li><a href="beranda.html" class="nav-link"><i class="bi bi-house-door"></i> Beranda</a></li>
+        <li><a href="transaksi.html" class="nav-link active"><i class="bi bi-book"></i> Pinjam Buku</a></li>
+        <li><a href="daftar-transaksi.html" class="nav-link"><i class="bi bi-clock-history"></i> Riwayat Pinjam</a></li>
+        <li class="nav-section">AKUN</li>
+        <li><a href="profile.html" class="nav-link"><i class="bi bi-person-circle"></i> Profil Saya</a></li>
+      </ul>
     </div>
   </div>
-</main>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow-1 bg-body-tertiary">
+    <div class="container py-4 py-md-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <div class="card shadow-lg rounded-4">
+            <div class="card-body">
+              <h2 class="mb-4 text-center">Form Transaksi Peminjaman Buku</h2>
+              <form id="formTransaksi">
+                <div class="mb-3">
+                  <label class="form-label">Nama Peminjam</label>
+                  <input type="text" id="nama" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Judul Buku</label>
+                  <input type="text" id="buku" class="form-control" required>
+                </div>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Tanggal Pinjam</label>
+                    <input type="date" id="tglPinjam" class="form-control" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Tanggal Kembali</label>
+                    <input type="date" id="tglKembali" class="form-control" required>
+                  </div>
+                </div>
+                <div class="d-grid mt-4">
+                  <button type="submit" class="btn btn-primary btn-lg">Simpan Transaksi</button>
+                </div>
+              </form>
+              <hr class="my-4">
+              <div class="text-center">
+                <a href="daftar-transaksi.html" class="btn btn-outline-secondary">Lihat Daftar Transaksi</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="asset/transaksi.js"></script>
-
 </body>
 </html>
