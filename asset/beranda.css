@@ -1,16 +1,13 @@
+/* ================= GLOBAL ================= */
 body {
   font-family: "Playfair Display", serif;
 }
 
-.carousel-item {
-  min-height: auto;
+.logo-img {
+  height: 36px;
 }
 
-.carousel-inner {
-  overflow: hidden;
-}
-
-/* Sidebar desktop */
+/* ================= SIDEBAR ================= */
 @media (min-width: 992px) {
   .sidebar-offcanvas {
     position: static;
@@ -19,40 +16,6 @@ body {
   }
 }
 
-/* GRID BUKU */
-.book-row {
-  display: grid;
-  gap: 1rem;
-}
-
-@media (max-width: 991px) {
-  .book-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 992px) {
-  .book-row {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* CARD COVER */
-.feature-card {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  background-size: cover;
-  background-position: center;
-  border-radius: 12px;
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
-}
-
-/* Logo */
-.logo-img {
-  height: 36px;
-}
-
-/* Profile */
 .profile-box {
   text-align: center;
 }
@@ -71,10 +34,6 @@ body {
   opacity: .85;
 }
 
-#bookCarousel {
-  touch-action: pan-y;
-}
-
 .sidebar-menu {
   padding: 0 10px;
 }
@@ -87,7 +46,6 @@ body {
   text-transform: uppercase;
 }
 
-/* MENU ITEM */
 .sidebar-menu .nav-link {
   display: flex;
   align-items: center;
@@ -99,19 +57,16 @@ body {
   transition: all 0.25s ease;
 }
 
-/* ICON */
 .sidebar-menu .nav-link i {
   font-size: 1.1rem;
 }
 
-/* HOVER */
 .sidebar-menu .nav-link:hover {
   background-color: rgba(33, 118, 192, 0.2);
   color: #ffffff;
   transform: translateX(4px);
 }
 
-/* ACTIVE */
 .sidebar-menu .nav-link.active {
   background: linear-gradient(135deg, #0091ff, #20a4c9);
   color: #ffffff;
@@ -119,23 +74,9 @@ body {
   box-shadow: 0 6px 16px rgba(1, 64, 255, 0.45);
 }
 
-/* GARIS PENANDA AKTIF */
-.sidebar-menu .nav-link.active::before {
-  content: "";
-  width: 4px;
-  height: 60%;
-  background-color: #ffffff;
-  border-radius: 4px;
-}
+/* ================= REKOMENDASI BUKU ================= */
 
-/* NON KLIK (jika ada) */
-.sidebar-menu .nav-link.disabled {
-  color: #6c757d;
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-/* === SCROLL AREA === */
+/* MOBILE & TABLET = SCROLL */
 .book-scroll {
   display: flex;
   gap: 1rem;
@@ -144,20 +85,19 @@ body {
   scroll-snap-type: x mandatory;
 }
 
-/* Scrollbar */
 .book-scroll::-webkit-scrollbar {
-  height: 8px;
+  height: 6px;
 }
-
 .book-scroll::-webkit-scrollbar-thumb {
   background-color: #adb5bd;
   border-radius: 10px;
 }
 
+/* CARD */
 .feature-card {
   flex: 0 0 auto;
-  width: 180px;
-  height: 260px;
+  width: 170px;
+  aspect-ratio: 2 / 3;
   border-radius: 14px;
   background-size: cover;
   background-position: center;
@@ -173,7 +113,7 @@ body {
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
 }
 
-/* Overlay Judul */
+/* OVERLAY */
 .card-overlay {
   position: absolute;
   inset: 0;
@@ -197,7 +137,19 @@ body {
 }
 
 .card-overlay small {
-  opacity: 0.85;
   font-size: 0.75rem;
+  opacity: 0.85;
 }
 
+/* ================= DESKTOP = GRID ================= */
+@media (min-width: 992px) {
+  .book-scroll {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    overflow: visible;
+  }
+
+  .feature-card {
+    width: 100%;
+  }
+}
