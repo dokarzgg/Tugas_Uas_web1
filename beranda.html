@@ -282,5 +282,50 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const daftarBuku = [
+    {
+      id: 1,
+      judul: "Jejak Kepribadian",
+      kategori: "Psikologi",
+      cover: "asset/img/cover1.jpeg"
+    },
+    {
+      id: 2,
+      judul: "Menanti Restu Langit",
+      kategori: "Novel",
+      cover: "asset/img/cover2.jpg"
+    },
+    {
+      id: 3,
+      judul: "Cinta yang Mekar",
+      kategori: "Romansa",
+      cover: "asset/img/cover3.jpeg"
+    },
+    {
+      id: 4,
+      judul: "Kala Itu Langit Biru",
+      kategori: "Puisi",
+      cover: "asset/img/cover4.jpeg"
+    },
+    {
+      id: 5,
+      judul: "Surat Untuk Senja",
+      kategori: "Novel",
+      cover: "asset/img/cover5.jpeg"
+    },
+    {
+      id: 6,
+      judul: "Sang Penerbang di Taman Puisi",
+      kategori: "Puisi",
+      cover: "asset/img/cover6.jpeg"
+    }
+  ];
+
+  // Simpan ke localStorage
+  localStorage.setItem("daftarBuku", JSON.stringify(daftarBuku));
+});
+</script>
 </body>
 </html>

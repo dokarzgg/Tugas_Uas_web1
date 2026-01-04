@@ -1,30 +1,43 @@
-// Batasi tanggal kembali
-const pinjam = document.getElementById("tglPinjam");
-const kembali = document.getElementById("tglKembali");
+document.addEventListener("DOMContentLoaded", () => {
+  const selectBuku = document.getElementById("buku");
 
-pinjam.addEventListener("change", () => {
-  kembali.min = pinjam.value;
-});
+  // Ambil data buku dari beranda
+  const daftarBuku = JSON.parse(localStorage.getItem("daftarBuku")) || [];
 
-// SIMPAN KE LOCALSTORAGE
-const form = document.getElementById("formTransaksi");
+  // Jika belum buka beranda
+  if (daftarBuku.length === 0) {
+    selectBuku.innerHTML =
+      "<option value=''>Data buku belum tersedia</option>";
+    return;
+  }
 
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
+  // Isi dropdown buku
+  daftarBuku.forEach(buku => {
+    const option = document.createElement("option");
+    option.value = buku.judul;
+    option.textContent = `${buku.judul} (${buku.kategori})`;
+    selectBuku.appendChild(option);
+  });
 
-  const transaksi = {
-    id: Date.now(), // ID unik
-    nama: document.getElementById("nama").value,
-    buku: document.getElementById("buku").value,
-    tglPinjam: pinjam.value,
-    tglKembali: kembali.value
-  };
+  // Simpan transaksi
+  document.getElementById("formTransaksi").addEventListener("submit", e => {
+    e.preventDefault();
 
-  let data = JSON.parse(localStorage.getItem("transaksi")) || [];
-  data.push(transaksi);
+    const transaksi = {
+      nama: document.getElementById("nama").value,
+      buku: selectBuku.value,
+      tglPinjam: document.getElementById("tglPinjam").value,
+      tglKembali: document.getElementById("tglKembali").value
+    };
+    
 
-  localStorage.setItem("transaksi", JSON.stringify(data));
+    const list =
+      JSON.parse(localStorage.getItem("transaksiBuku")) || [];
 
-  alert("Transaksi berhasil disimpan!");
-  form.reset();
+    list.push(transaksi);
+    localStorage.setItem("transaksiBuku", JSON.stringify(list));
+
+    alert("Transaksi berhasil disimpan!");
+    e.target.reset();
+  });
 });
