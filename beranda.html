@@ -74,6 +74,15 @@
           <i class="bi bi-person-circle"></i> Profil Saya
         </a>
       </li>
+
+      <li>
+  <button class="nav-link text-danger w-100 text-start"
+    onclick="logout()">
+    <i class="bi bi-box-arrow-right"></i>
+    <span>Logout</span>
+  </button>
+</li>
+
     </ul>
   </div>
 </aside>
@@ -327,5 +336,11 @@ document.addEventListener("DOMContentLoaded", () => {
   localStorage.setItem("daftarBuku", JSON.stringify(daftarBuku));
 });
 </script>
+<script>
+if (localStorage.getItem("isLogin") !== "true") {
+  window.location.href = "index.html";
+}
+</script>
+<script src="asset/logout.js"></script>
 </body>
 </html>

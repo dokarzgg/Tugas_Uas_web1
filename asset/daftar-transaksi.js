@@ -13,20 +13,32 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // pastikan semua transaksi punya status
-  data = data.map(trx => ({
-    ...trx,
-    status: trx.status || "Dipinjam"
-  }));
+  const today = new Date().toISOString().split("T")[0];
 
-  renderTabel();
+  // Pastikan semua transaksi punya status + auto terlambat
+  data = data.map(trx => {
+    if (!trx.status) trx.status = "Dipinjam";
 
-  function renderTabel() {
+    if (
+      trx.status !== "Dikembalikan" &&
+      trx.tglKembali < today
+    ) {
+      trx.status = "Terlambat";
+    }
+
+    return trx;
+  });
+
+  simpan();
+  render();
+
+  function render() {
     tabel.innerHTML = "";
 
     data.forEach((trx, index) => {
-      const row = document.createElement("tr");
+      const badge = getBadge(trx.status);
 
+      const row = document.createElement("tr");
       row.innerHTML = `
         <td>${index + 1}</td>
         <td>${trx.nama}</td>
@@ -34,21 +46,25 @@ document.addEventListener("DOMContentLoaded", () => {
         <td>${trx.tglPinjam}</td>
         <td>${trx.tglKembali}</td>
         <td>
-          <select class="form-select form-select-sm status-select" data-index="${index}">
-            <option value="Dipinjam">Dipinjam</option>
-            <option value="Dikembalikan">Dikembalikan</option>
-            <option value="Terlambat">Terlambat</option>
-          </select>
+          <div class="d-flex flex-column gap-1 align-items-center">
+            <span class="badge bg-${badge}">
+              ${trx.status}
+            </span>
+            <select class="form-select form-select-sm status-select"
+              data-index="${index}">
+              <option value="Dipinjam">Dipinjam</option>
+              <option value="Dikembalikan">Dikembalikan</option>
+              <option value="Terlambat">Terlambat</option>
+            </select>
+          </div>
         </td>
       `;
 
       tabel.appendChild(row);
 
-      // set nilai status
       row.querySelector(".status-select").value = trx.status;
     });
 
-    simpan();
     pasangListener();
   }
 
@@ -58,8 +74,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const index = e.target.dataset.index;
         data[index].status = e.target.value;
         simpan();
+        render();
       });
     });
+  }
+
+  function getBadge(status) {
+    switch (status) {
+      case "Dikembalikan":
+        return "success";
+      case "Terlambat":
+        return "danger";
+      default:
+        return "primary";
+    }
   }
 
   function simpan() {
